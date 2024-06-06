@@ -1,0 +1,28 @@
+﻿@model IEnumerable<CetBooks.Models.Book>
+
+<a asp-action="Create" class="btn btn-primary">Create New Book</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>@Html.DisplayNameFor(model => model.Author)</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var book in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-action="Detail" asp-route-id="@book.Id">@book.Title</a>
+                </td>
+                <td>@book.Author</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@book.Id" onclick="return confirm('Silmek istediğinizden emin misiniz?')">Sil</a> |
+                    Güncelle
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
